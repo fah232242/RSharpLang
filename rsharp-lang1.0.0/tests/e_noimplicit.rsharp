@@ -1,0 +1,2 @@
+// expect-error: never converts numbers implicitly
+print(1 + 2.0);

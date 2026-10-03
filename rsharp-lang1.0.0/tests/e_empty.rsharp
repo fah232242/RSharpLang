@@ -1,0 +1,2 @@
+// expect-error: cannot infer the element type
+let xs = [];

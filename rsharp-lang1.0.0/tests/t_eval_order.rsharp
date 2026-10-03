@@ -1,0 +1,33 @@
+// Regression: R# evaluates left to right (C leaves argument order unspecified).
+fn tick(label: string) -> int {
+    print(label);
+    return 1;
+}
+fn two(a: int, b: int) -> int => a + b;
+fn three(a: int, b: int, c: int) -> int => a * 100 + b * 10 + c;
+print(two(tick("first"), tick("second")));
+// expect: first
+// expect: second
+// expect: 2
+let xs = [tick("a"), tick("b"), tick("c")];
+// expect: a
+// expect: b
+// expect: c
+print(tick("L") + tick("R"));
+// expect: L
+// expect: R
+// expect: 2
+print($"{tick("x")}-{tick("y")}");
+// expect: x
+// expect: y
+// expect: 1-1
+print(three(two(tick("p"), tick("q")), tick("r"), tick("s")));
+// expect: p
+// expect: q
+// expect: r
+// expect: s
+// expect: 211
+print(tick("m") == tick("n"));
+// expect: m
+// expect: n
+// expect: true

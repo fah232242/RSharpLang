@@ -1,0 +1,3 @@
+// expect-error: it is immutable
+let x = 1;
+x = 2;
