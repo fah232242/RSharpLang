@@ -1,0 +1,2 @@
+// expect-error: condition must be bool
+if 1 { print("x"); }

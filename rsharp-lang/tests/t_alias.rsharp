@@ -1,0 +1,13 @@
+// Regression: `xs[i] = f()` must evaluate f() before taking the element address,
+// because f may grow (reallocate) the array.
+fn grow(a: int[]) -> int { return 7; }
+fn grow2(a: int[], n: int) -> int => n;
+mut xs = [1, 2];
+xs[0] = grow(xs);
+xs[1] += grow2(xs, 5);
+print(xs);               // expect: [7, 7]
+// arrays are references: aliasing is visible
+mut a = [1];
+mut b = a;
+b.push(2);
+print(a, b);             // expect: [1, 2] [1, 2]

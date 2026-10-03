@@ -1,0 +1,21 @@
+mut i = 0;
+mut total = 0;
+while i < 10 {
+    i += 1;
+    if i % 2 == 0 { continue; }
+    if i > 7 { break; }
+    total += i;
+}
+print(total);            // expect: 16
+for k in 0..3 { print(k); }
+// expect: 0
+// expect: 1
+// expect: 2
+for x in [10, 20, 30] { total += x; }
+print(total);            // expect: 76
+for e in 5..5 { print("never"); }
+if total > 100 { print("big"); } else if total > 50 { print("medium"); } else { print("small"); }
+// expect: medium
+mut sum = 0;
+for r in 0..4 { for c in 0..4 { if c > r { break; } sum += 1; } }
+print(sum);              // expect: 10

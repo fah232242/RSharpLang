@@ -1,0 +1,11 @@
+let name = "Alice";
+let age = 30;
+print($"Name: {name}, age: {age + 1}");   // expect: Name: Alice, age: 31
+print($"{{literal}} {name.length} {1.5} {true}"); // expect: {literal} 5 1.5 true
+print($"nested: {str(len([1, 2]))} {"in"}");     // expect: nested: 2 in
+print(str(42) + "!", int(3.99), float64(2) / 4.0); // expect: 42! 3 0.5
+print("héllo", "héllo".length);           // expect: héllo 6
+mut s = "ab";
+s += "cd";
+print(s);                                 // expect: abcd
+print("a" == "a", "a" != "b");            // expect: true true

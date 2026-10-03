@@ -1,0 +1,17 @@
+// variables, arithmetic, precedence, strings
+let a = 7;
+mut b = 2;
+b += 3;
+print(a + b * 2);        // expect: 17
+print(a / 2, a % 4);     // expect: 3 3
+print(-a, 10 - 3 - 2);   // expect: -7 5
+print(1.5 + 2.25);       // expect: 3.75
+print(3.0);              // expect: 3.0
+print(true && !false);   // expect: true
+print("a" + "b", "x" < "y"); // expect: ab true
+const PI: float64 = 3.14159;
+print(PI * 2.0);         // expect: 6.28318
+let n: int = 5;
+print(n == 5, n != 5);   // expect: true false
+print();                 // expect:
+print("tab\there", "q\"uote"); // expect: tab	here q"uote
