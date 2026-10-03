@@ -1,0 +1,2 @@
+// expect-error: cannot initialize 'x' of type int with string
+let x: int = "s";

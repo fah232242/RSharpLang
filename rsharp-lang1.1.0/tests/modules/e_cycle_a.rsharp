@@ -1,0 +1,2 @@
+// expect-error: cannot find module 'does_not_exist'
+import does_not_exist;

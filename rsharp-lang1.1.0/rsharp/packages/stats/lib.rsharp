@@ -1,0 +1,19 @@
+import math;
+
+pub fn mean(xs: float64[]) -> float64 => sum(xs) / float64(len(xs));
+
+pub fn median(xs: float64[]) -> float64 {
+    let s = sorted(xs);
+    let n = len(s);
+    if n % 2 == 1 { return s[n / 2]; }
+    return (s[n / 2 - 1] + s[n / 2]) / 2.0;
+}
+
+pub fn variance(xs: float64[]) -> float64 {
+    let m = mean(xs);
+    mut acc = 0.0;
+    for x in xs { acc += (x - m) ** 2.0; }
+    return acc / float64(len(xs));
+}
+
+pub fn stdev(xs: float64[]) -> float64 => math.sqrt(variance(xs));

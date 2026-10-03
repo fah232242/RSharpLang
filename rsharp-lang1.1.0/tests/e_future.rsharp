@@ -1,0 +1,2 @@
+// expect-error: reserved in R# but not implemented in v0.1
+class Foo { }

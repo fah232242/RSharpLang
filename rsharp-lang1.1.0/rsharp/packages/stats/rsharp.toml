@@ -1,0 +1,4 @@
+[package]
+name = "stats"
+version = "0.1.0"
+description = "Descriptive statistics for float64 arrays"

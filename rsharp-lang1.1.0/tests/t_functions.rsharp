@@ -1,0 +1,24 @@
+fn add(a: int, b: int) -> int {
+    return a + b;
+}
+fn square(x: int) -> int => x * x;
+fn fact(n: int) -> int {
+    if n <= 1 { return 1; }
+    return n * fact(n - 1);
+}
+fn fib(n: int) -> int {
+    if n < 2 { return n; } else { return fib(n - 1) + fib(n - 2); }
+}
+fn greet(name: string) { print($"Hello, {name}!"); }
+fn say() => print("said");
+const SCALE = 3;
+fn scaled(x: int) -> int => x * SCALE;
+print(add(10, 20));      // expect: 30
+print(square(9));        // expect: 81
+print(fact(10));         // expect: 3628800
+print(fib(20));          // expect: 6765
+greet("R#");             // expect: Hello, R#!
+say();                   // expect: said
+print(scaled(4));        // expect: 12
+print(later(5));         // expect: 6
+fn later(x: int) -> int => x + 1;

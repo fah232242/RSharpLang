@@ -1,0 +1,7 @@
+import text;
+import stats;
+import algo from "@rsharp/algo";
+print(text.pad_left("7", 3, "0"), text.capitalize("hELLO"), text.is_digits("123"), text.is_digits("1a")); // expect: 007 Hello true false
+print(text.count("banana", "an"), text.reverse("abc"));    // expect: 2 cba
+print(stats.mean([1.0, 2.0, 3.0, 4.0]), stats.median([3.0, 1.0, 2.0]), stats.stdev([2.0, 2.0])); // expect: 2.5 2.0 0.0
+print(algo.factorial(10), algo.fib(30), algo.is_prime(97), algo.binary_search([1, 3, 5, 7], 5), algo.clamp(15, 0, 10)); // expect: 3628800 832040 true 2 10

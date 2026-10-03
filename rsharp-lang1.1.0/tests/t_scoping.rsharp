@@ -1,0 +1,13 @@
+let x = 1;
+{
+    let x = x + 10;
+    print(x);            // expect: 11
+}
+print(x);                // expect: 1
+fn f(n: int) -> int {
+    let n2 = n * 2;
+    { let n2 = n2 + 1; return n2; }
+}
+print(f(5));             // expect: 11
+fn main() { print("main runs after script"); }
+// expect: main runs after script

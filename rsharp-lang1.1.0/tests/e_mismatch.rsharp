@@ -1,0 +1,2 @@
+// expect-error: cannot apply '+' to int and string
+print(1 + "a");

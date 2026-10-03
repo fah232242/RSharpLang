@@ -1,0 +1,36 @@
+pub fn factorial(n: int) -> int {
+    mut r = 1;
+    for i in range(2, n + 1) { r *= i; }
+    return r;
+}
+pub fn fib(n: int) -> int {
+    mut a = 0;
+    mut b = 1;
+    for i in range(n) {
+        let t = a + b;
+        a = b;
+        b = t;
+    }
+    return a;
+}
+pub fn is_prime(n: int) -> bool {
+    if n < 2 { return false; }
+    mut d = 2;
+    while d * d <= n {
+        if n % d == 0 { return false; }
+        d += 1;
+    }
+    return true;
+}
+pub fn binary_search(xs: int[], target: int) -> int {
+    mut lo = 0;
+    mut hi = len(xs) - 1;
+    while lo <= hi {
+        let mid = (lo + hi) / 2;
+        if xs[mid] == target { return mid; }
+        if xs[mid] < target { lo = mid + 1; } else { hi = mid - 1; }
+    }
+    return -1;
+}
+pub const CLAMP_NOTE = "clamp(x, lo, hi) = min(max(x, lo), hi)";
+pub fn clamp(x: int, lo: int, hi: int) -> int => min(max(x, lo), hi);
