@@ -1,0 +1,4 @@
+// expect-error: cannot modify fields of 'p'
+struct P { x: int }
+let p = P { x: 1 };
+p.x = 2;

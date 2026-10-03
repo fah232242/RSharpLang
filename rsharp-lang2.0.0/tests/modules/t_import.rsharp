@@ -1,0 +1,8 @@
+import _helper;
+import _helper as h;
+from _helper import double as dbl, bump;
+import math;
+from math import sqrt, pi;
+print(_helper.double(4), h.GREETING, dbl(5), bump(3));   // expect: 8 hi 10 7
+print(math.sqrt(16), sqrt(2) > 1.41, math.floor(2.7), math.ceil(2.1), math.gcd(12, 18)); // expect: 4.0 true 2 3 6
+print(pi > 3.14, math.pi == pi, math.pow(2, 3), h.area(1.0) > 3.14); // expect: true true 8.0 true

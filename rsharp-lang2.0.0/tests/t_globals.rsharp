@@ -1,0 +1,10 @@
+mut counter = 0;
+const LIMIT = 3;
+fn bump() { counter += 1; }
+fn limit() -> int => LIMIT;
+bump();
+bump();
+print(counter, limit());                 // expect: 2 3
+let local_only = 5;
+fn sees_earlier_let() -> int => local_only + 1;
+print(sees_earlier_let());               // expect: 6

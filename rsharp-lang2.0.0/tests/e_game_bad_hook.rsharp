@@ -1,0 +1,3 @@
+// expect-error: game hook must be declared as
+game "Bad";
+fn update(x: int) { }

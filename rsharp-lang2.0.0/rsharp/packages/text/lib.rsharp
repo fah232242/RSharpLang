@@ -1,0 +1,29 @@
+pub fn pad_left(s: string, width: int, ch: string) -> string {
+    mut r = s;
+    while r.length < width { r = ch + r; }
+    return r;
+}
+pub fn pad_right(s: string, width: int, ch: string) -> string {
+    mut r = s;
+    while r.length < width { r = r + ch; }
+    return r;
+}
+pub fn capitalize(s: string) -> string {
+    if s.length == 0 { return s; }
+    return s[0:1].upper() + s[1:].lower();
+}
+pub fn is_digits(s: string) -> bool {
+    if s.length == 0 { return false; }
+    for c in s {
+        if c < "0" or c > "9" { return false; }
+    }
+    return true;
+}
+pub fn count(s: string, sub: string) -> int {
+    return s.split(sub).length - 1;
+}
+pub fn reverse(s: string) -> string {
+    mut r = "";
+    for c in s { r = c + r; }
+    return r;
+}

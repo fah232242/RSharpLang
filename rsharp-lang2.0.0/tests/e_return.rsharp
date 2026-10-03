@@ -1,0 +1,4 @@
+// expect-error: may finish without returning
+fn f(x: int) -> int {
+    if x > 0 { return 1; }
+}

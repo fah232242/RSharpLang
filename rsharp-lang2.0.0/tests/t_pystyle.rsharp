@@ -1,0 +1,39 @@
+# Python-style layer: # comments, and/or/not, in, **, slicing, negative index, range, methods
+let xs = [5, 3, 8, 1];
+print(xs[-1], xs[1:3], xs[:2], xs[2:]);       // expect: 1 [3, 8] [5, 3] [8, 1]
+print(2 ** 10, 2.0 ** 0.5 > 1.4);             // expect: 1024 true
+print(3 in xs, 9 not in xs, not (3 in xs));   // expect: true true false
+print(1 < 2 and 2 < 3, false or true);        // expect: true true
+for i in range(10, 0, -3) { print(i); }
+// expect: 10
+// expect: 7
+// expect: 4
+// expect: 1
+print(range(4), sum(range(5)), max(xs), min(xs)); // expect: [0, 1, 2, 3] 10 8 1
+print(sorted(xs), reversed(xs));              // expect: [1, 3, 5, 8] [1, 8, 3, 5]
+mut ys = [3, 1, 2];
+ys.sort();
+ys.reverse();
+print(ys, ys.pop(), ys);                      // expect: [3, 2, 1] 1 [3, 2]
+let s = "  Hello, World  ";
+print(s.strip().upper(), s.strip().lower());  // expect: HELLO, WORLD hello, world
+print("a,b,c".split(","), ", ".join(["x", "y"])); // expect: ["a", "b", "c"] x, y
+print("hello".replace("l", "L"), "hello".find("ll"), "ab" * 3); // expect: heLLo 2 ababab
+print("hello"[1:3], "hello"[-1], "ell" in "hello"); // expect: el o true
+print("hello".startswith("he"), "hello".endswith("lo")); // expect: true true
+print(abs(-5), abs(-2.5), round(2.5), round(3.5), int("42") + 1, float64("1.5")); // expect: 5 2.5 2 4 43 1.5
+print(ord("A"), chr(98));                     // expect: 65 b
+mut d = {"a": 1, "b": 2};
+d["c"] = 3;
+d["a"] += 10;
+print(d, len(d), "a" in d, d.get("z", -1));   // expect: {"a": 11, "b": 2, "c": 3} 3 true -1
+print(d.keys(), d.values());                  // expect: ["a", "b", "c"] [11, 2, 3]
+d.remove("b");
+for k, v in d { print(k, v); }
+// expect: a 11
+// expect: c 3
+for ch in "hi" { print(ch); }
+// expect: h
+// expect: i
+let empty: map<string[]> = {};
+print(empty, len(empty));                     // expect: {} 0

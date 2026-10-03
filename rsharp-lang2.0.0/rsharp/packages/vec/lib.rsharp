@@ -1,0 +1,32 @@
+import math;
+
+struct Vec2 { x: float64, y: float64 }
+struct Vec3 { x: float64, y: float64, z: float64 }
+
+pub fn vec2(x: float64, y: float64) -> Vec2 => Vec2 { x: x, y: y };
+pub fn add2(a: Vec2, b: Vec2) -> Vec2 => Vec2 { x: a.x + b.x, y: a.y + b.y };
+pub fn sub2(a: Vec2, b: Vec2) -> Vec2 => Vec2 { x: a.x - b.x, y: a.y - b.y };
+pub fn scale2(a: Vec2, k: float64) -> Vec2 => Vec2 { x: a.x * k, y: a.y * k };
+pub fn dot2(a: Vec2, b: Vec2) -> float64 => a.x * b.x + a.y * b.y;
+pub fn len2(a: Vec2) -> float64 => math.sqrt(dot2(a, a));
+pub fn dist2(a: Vec2, b: Vec2) -> float64 => len2(sub2(a, b));
+pub fn norm2(a: Vec2) -> Vec2 {
+    let l = len2(a);
+    if l == 0.0 { return a; }
+    return scale2(a, 1.0 / l);
+}
+pub fn lerp2(a: Vec2, b: Vec2, t: float64) -> Vec2 => add2(a, scale2(sub2(b, a), t));
+
+pub fn vec3(x: float64, y: float64, z: float64) -> Vec3 => Vec3 { x: x, y: y, z: z };
+pub fn add3(a: Vec3, b: Vec3) -> Vec3 => Vec3 { x: a.x + b.x, y: a.y + b.y, z: a.z + b.z };
+pub fn sub3(a: Vec3, b: Vec3) -> Vec3 => Vec3 { x: a.x - b.x, y: a.y - b.y, z: a.z - b.z };
+pub fn scale3(a: Vec3, k: float64) -> Vec3 => Vec3 { x: a.x * k, y: a.y * k, z: a.z * k };
+pub fn dot3(a: Vec3, b: Vec3) -> float64 => a.x * b.x + a.y * b.y + a.z * b.z;
+pub fn cross3(a: Vec3, b: Vec3) -> Vec3 =>
+    Vec3 { x: a.y * b.z - a.z * b.y, y: a.z * b.x - a.x * b.z, z: a.x * b.y - a.y * b.x };
+pub fn len3(a: Vec3) -> float64 => math.sqrt(dot3(a, a));
+pub fn norm3(a: Vec3) -> Vec3 {
+    let l = len3(a);
+    if l == 0.0 { return a; }
+    return scale3(a, 1.0 / l);
+}

@@ -1,0 +1,4 @@
+[package]
+name = "vec"
+version = "0.1.0"
+description = "Vec2/Vec3 game math (structs, add/sub/scale/dot/length/normalize/lerp/cross)"

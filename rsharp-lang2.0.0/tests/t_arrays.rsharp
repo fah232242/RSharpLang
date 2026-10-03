@@ -1,0 +1,29 @@
+mut xs = [3, 1, 2];
+xs.push(9);
+xs[0] = 100;
+xs[1] += 5;
+print(xs);               // expect: [100, 6, 2, 9]
+print(xs.length, len(xs), xs[3]); // expect: 4 4 9
+let names = ["a", "b\"c"];
+print(names);            // expect: ["a", "b\"c"]
+mut grid = [[1, 2], [3, 4]];
+grid[1][0] = 30;
+grid.push([5]);
+print(grid, grid[1][0]); // expect: [[1, 2], [30, 4], [5]] 30
+let none: int[] = [];
+print(none, len(none));  // expect: [] 0
+mut fs: float64[] = [];
+fs.push(1.5);
+print(fs);               // expect: [1.5]
+fn total(a: int[]) -> int {
+    mut t = 0;
+    for v in a { t += v; }
+    return t;
+}
+print(total([1, 2, 3, 4])); // expect: 10
+mut bs = [true];
+bs.push(false);
+print(bs);               // expect: [true, false]
+mut acc: int[] = [];
+for i in 0..1000 { acc.push(i * i); }
+print(len(acc), acc[999]); // expect: 1000 998001

@@ -1,0 +1,6 @@
+import math;
+pub const GREETING = "hi";
+pub fn double(x: int) -> int => x * 2;
+fn private_helper(x: int) -> int => x + 1;
+pub fn area(r: float64) -> float64 => math.pi * r * r;
+pub fn bump(x: int) -> int => private_helper(double(x));

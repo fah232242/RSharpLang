@@ -1,0 +1,40 @@
+# A headless bouncing-ball game: fixed-timestep physics, software rendering, frame export.
+import game;
+import vec;
+
+game "Bounce";
+
+struct Ball { pos: Vec2, vel: Vec2, radius: int }
+
+mut ball = Ball { pos: vec.vec2(40.0, 20.0), vel: vec.vec2(70.0, 0.0), radius: 6 };
+mut bounces = 0;
+
+fn start() {
+    game.window(160, 90);
+    game.max_frames(240);
+}
+
+fn fixed_update(dt: float64) {
+    ball.vel.y += 500.0 * dt;
+    ball.pos = vec.add2(ball.pos, vec.scale2(ball.vel, dt));
+    if ball.pos.y > 82.0 {
+        ball.pos.y = 82.0;
+        ball.vel.y = -ball.vel.y * 0.85;
+        bounces += 1;
+    }
+    if ball.pos.x > 154.0 or ball.pos.x < 6.0 { ball.vel.x = -ball.vel.x; }
+}
+
+fn update(dt: float64) { }
+
+fn draw() {
+    game.clear(15, 20, 35);
+    game.line(0, 88, 159, 88, 90, 90, 110);
+    game.circle(int(ball.pos.x), int(ball.pos.y), ball.radius, 250, 190, 50);
+}
+
+fn shutdown() {
+    print($"simulated {game.frame()} frames ({game.seconds()} s), bounces: {bounces}");
+    print($"ball at ({round(ball.pos.x)}, {round(ball.pos.y)})");
+    game.save_frame("bounce_last_frame.ppm");
+}

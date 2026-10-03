@@ -1,0 +1,34 @@
+import game;
+game "Test";
+
+mut updates = 0;
+mut fixed = 0;
+mut draws = 0;
+mut last_delta = 0.0;
+
+fn start() {
+    game.max_frames(10);
+    game.target_fps(30);
+    game.window(8, 4);
+    print("start");                      // expect: start
+}
+fn update(delta: float64) {
+    updates += 1;
+    last_delta = delta;
+    if game.frame() == 4 { game.quit(); }
+}
+fn fixed_update(delta: float64) { fixed += 1; }
+fn draw() {
+    draws += 1;
+    game.clear(0, 0, 0);
+    game.fill_rect(1, 1, 2, 2, 255, 0, 0);
+    game.pixel(7, 3, 0, 255, 0);
+    game.circle(5, 1, 0, 0, 0, 255);
+    game.line(0, 3, 3, 3, 10, 20, 30);
+}
+fn shutdown() {
+    print(updates, fixed, draws, game.frame());                     // expect: 5 5 5 5
+    print(last_delta > 0.033 and last_delta < 0.034, game.seconds() > 0.16 and game.seconds() < 0.17); // expect: true true
+    print(game.pixel_at(1, 1), game.pixel_at(7, 3), game.pixel_at(5, 1), game.pixel_at(2, 3), game.pixel_at(0, 0)); // expect: 16711680 65280 255 660510 0
+    print(game.width(), game.height());                             // expect: 8 4
+}

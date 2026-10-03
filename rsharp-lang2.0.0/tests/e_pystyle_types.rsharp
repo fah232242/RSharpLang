@@ -1,0 +1,2 @@
+// expect-error: cannot apply 'in'
+print("a" in [1, 2]);

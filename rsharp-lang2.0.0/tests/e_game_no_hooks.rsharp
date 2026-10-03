@@ -1,0 +1,3 @@
+// expect-error: a game needs at least update(delta) or draw()
+game "Empty";
+fn start() { }

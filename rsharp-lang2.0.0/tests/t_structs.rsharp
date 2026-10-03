@@ -1,0 +1,42 @@
+struct Point { x: float64, y: float64 }
+struct Player { name: string, pos: Point, hp: int, tags: string[] }
+struct Box { id: int, size: Point }
+
+fn dist(a: Point, b: Point) -> float64 {
+    let dx = a.x - b.x;
+    let dy = a.y - b.y;
+    return (dx * dx + dy * dy) ** 0.5;
+}
+fn moved(p: Point, dx: float64) -> Point => Point { x: p.x + dx, y: p.y };
+fn heal(p: Player) -> Player {
+    mut q = p;       # structs are values: q is a copy
+    q.hp += 10;
+    return q;
+}
+
+let a = Point { x: 0.0, y: 0.0 };
+let b = Point { x: 3.0, y: 4.0 };
+print(dist(a, b));                       // expect: 5.0
+print(a, moved(b, 1.5));                 // expect: Point(x=0.0, y=0.0) Point(x=4.5, y=4.0)
+mut p = Player { name: "Ann", pos: a, hp: 50, tags: ["hero"] };
+p.pos.x = 7.5;
+p.hp -= 5;
+p.tags.push("fast");
+print(p);                                // expect: Player(name="Ann", pos=Point(x=7.5, y=0.0), hp=45, tags=["hero", "fast"])
+let h = heal(p);
+print(p.hp, h.hp);                       // expect: 45 55
+mut pts = [Point { x: 1.0, y: 1.0 }, Point { x: 2.0, y: 2.0 }];
+pts[1].y = 9.0;
+pts.push(Point { x: 3.0, y: 3.0 });
+print(pts[1], len(pts));                 // expect: Point(x=2.0, y=9.0) 3
+mut total = 0.0;
+for q in pts { total += q.x; }
+print(total);                            // expect: 6.0
+mut by_name: map<Box> = {};
+by_name["a"] = Box { id: 1, size: a };
+by_name["a"].id = 42;
+print(by_name["a"].id, $"{by_name["a"].size.x}"); // expect: 42 0.0
+let copy_of_a = a;
+mut other = copy_of_a;
+other.x = 99.0;
+print(a.x, other.x);                     // expect: 0.0 99.0

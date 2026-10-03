@@ -1,0 +1,3 @@
+// expect-error: is not supported for P yet
+struct P { x: int }
+print(P { x: 1 } == P { x: 1 });
